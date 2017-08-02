@@ -3,6 +3,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "teamspeak";
+$table = "users";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
