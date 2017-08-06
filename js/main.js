@@ -1,7 +1,2 @@
-if(!window.jQuery)
-{
-   var script = document.createElement('script');
-   script.type = "text/javascript";
-   script.src = "path/to/jQuery";
-   document.getElementsByTagName('head')[0].appendChild(script);
-}
+var avgclients = <?php echo json_encode($json, JSON_PRETTY_PRINT) ?>;
+alert(avgclients['2017-07-31']);
