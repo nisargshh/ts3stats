@@ -33,21 +33,21 @@ while ($r = mysqli_fetch_assoc($result)) {
 $nodates = sizeof($dates);
 
 //GETTING AVERAGE CLIENTS PER DAY
-$clientavg = array();
+$clientmax = array();
 for ($i=0; $i < $nodates; $i++) {
-    $sql = "SELECT AVG(clients) AS avgclients FROM users WHERE dated='" . $dates[$i] . "'";
+    $sql = "SELECT MAX(clients) AS avgclients FROM users WHERE dated='" . $dates[$i] . "'";
     $query = mysqli_query($conn, $sql);
     $avg = mysqli_fetch_assoc($query);
-    $clientavg[] = $avg['avgclients'];
+    $clientmax[] = $avg['avgclients'];
 }
 
 $data = array(
   array('day', 'avgclients'),
   $dates,
-  $clientavg
+  $clientmax
 );
 
 
 //OUTPUT DATES AND AVG AS A JSON
-$json = array_combine($dates, $clientavg);
+$json = array_combine($dates, $clientmax);
 //echo json_encode($json);

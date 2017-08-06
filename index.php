@@ -14,22 +14,23 @@ require_once 'main.php';
 
   function drawChart() {
     var dates = <?php echo json_encode($dates); ?>;
-    var clientavg = <?php echo json_encode($clientavg); ?>;
+    var clientmax = <?php echo json_encode($clientmax); ?>;
     var data = <?php echo json_encode($data); ?>;
     var newdates = dates.toString();
-    var firstdates, firstdate, firstavg;
+    var firstdates, firstdate, maxclients;
+    firstdates = dates[0];
+    firstdate = new Date(firstdates);
 
 
     var dataTable = new google.visualization.DataTable();
-       dataTable.addColumn({ type: 'date', id: 'Date' });
-       dataTable.addColumn({ type: 'number', id: 'AvgClients' });
-       //dataTable.addRows([[firstdate, parseInt(firstavg)]]);
+       dataTable.addColumn({ type: 'date', id: 'Date'});
+       dataTable.addColumn({ type: 'number', id: 'Max Clients'});
 
        for (var i = 0; i < dates.length; i++) {
              firstdates = dates[i];
              firstdate = new Date(firstdates);
-             firstavg = clientavg[i];
-             dataTable.addRows([[firstdate, parseInt(firstavg)]]);
+             maxclients = clientmax[i];
+             dataTable.addRows([[firstdate, parseInt(maxclients)]]);
        }
 
   // Set chart options
@@ -37,6 +38,8 @@ require_once 'main.php';
   var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
   var options = {
          title: "Teamspeak Statistics",
+         tooltip: {isHtml: true},
+         focusTarget: 'category',
          height: 1000000000000000,
          noDataPattern: {
            backgroundColor: '#ADAAA9',
