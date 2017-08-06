@@ -22,7 +22,7 @@ require_once 'main.php';
 
     var dataTable = new google.visualization.DataTable();
        dataTable.addColumn({ type: 'date', id: 'Date' });
-       dataTable.addColumn({ type: 'number', id: 'Won/Loss' });
+       dataTable.addColumn({ type: 'number', id: 'AvgClients' });
        //dataTable.addRows([[firstdate, parseInt(firstavg)]]);
 
        for (var i = 0; i < dates.length; i++) {
