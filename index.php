@@ -1,58 +1,39 @@
 <?php
-require_once 'main.php';
+require 'main.php';
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
-  <!--Load the AJAX API-->
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js" integrity="sha256-SiHXR50l06UwJvHhFY4e5vzwq75vEHH+8fFNpkXePr0=" crossorigin="anonymous"></script>
   <script type="text/javascript">
-
-  google.charts.load("current", {packages:["calendar"]});
-  google.charts.setOnLoadCallback(drawChart);
-
-  function drawChart() {
-    var dates = <?php echo json_encode($dates); ?>;
-    var clientmax = <?php echo json_encode($clientmax); ?>;
-    var data = <?php echo json_encode($data); ?>;
-    var newdates = dates.toString();
-    var firstdates, firstdate, maxclients;
-    firstdates = dates[0];
-    firstdate = new Date(firstdates);
-
-
-    var dataTable = new google.visualization.DataTable();
-       dataTable.addColumn({ type: 'date', id: 'Date'});
-       dataTable.addColumn({ type: 'number', id: 'Max Clients'});
-
-       for (var i = 0; i < dates.length; i++) {
-             firstdates = dates[i];
-             firstdate = new Date(firstdates);
-             maxclients = clientmax[i];
-             dataTable.addRows([[firstdate, parseInt(maxclients)]]);
-       }
-
-  // Set chart options
-
-  var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
-  var options = {
-         title: "Teamspeak Statistics",
-         tooltip: {isHtml: true},
-         focusTarget: 'category',
-         height: 1000000000000000,
-         noDataPattern: {
-           backgroundColor: '#ADAAA9',
-           color: ''
-         }
-  };
-  chart.draw(dataTable, options);
-}
-</script>
+  var dates = <?php echo json_encode($dates); ?>;
+  var maxusers = <?php echo json_encode($clientmax); ?>;
+  </script>
 </head>
-
 <body>
-  <!--Div that will hold the pie chart-->
-  <div id="calendar_basic" style="width: 1000px; height: 350px;"></div>
+  <canvas id="myChart"></canvas>
+  <script type="text/javascript">
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+      labels: dates,
+      datasets: [{
+        label: "Max Users",
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: maxusers,
+      }]
+    },
+
+    // Configuration options go here
+    options: {}
+  });
+  </script>
 </body>
 </html>
