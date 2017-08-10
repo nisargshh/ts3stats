@@ -13,7 +13,7 @@ require 'main.php';
   </script>
 </head>
 <body>
-  <canvas id="myChart"></canvas>
+  <canvas id="myChart" style="position: relative; height:40vh; width:80vw"></canvas>
   <script type="text/javascript">
   var ctx = document.getElementById('myChart').getContext('2d');
   var chart = new Chart(ctx, {
