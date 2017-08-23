@@ -17,8 +17,10 @@ require 'main.php';
 <body>
   <table>
     <tr>
-      <td><canvas id="maxChart" style="position: relative; height:40vh; width:80vw"></canvas></td>
-      <td><canvas id="avgChart" style="position: relative; height:40vh; width:80vw"></canvas></td>
+      <td><canvas id="maxChart" style="position: relative; height:45vh; width:100vw"></canvas></td>
+    </tr>
+    <tr>
+      <td><canvas id="avgChart" style="position: relative; height:45vh; width:100vw"></canvas></td>
     </tr>
   </table>
 
@@ -54,7 +56,7 @@ require 'main.php';
     data: {
       labels: dates,
       datasets: [{
-        label: "Max Users",
+        label: "AVG Users",
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 99, 132)',
         data: avgusers,
