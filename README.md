@@ -1,4 +1,4 @@
-# ts3stats-mihir
+# ts3stats
 ## This is an application to see the average and max users of a teamspeak server in a graphical representation.
 
 ------------------------------------------
@@ -9,11 +9,10 @@ The target audience for TeamSpeak is gamers, who can use the software to communi
 
 ---------------------------------------------------------------
 
-### What Does This Application Do?
-* This application runs every 30 mins using cron(recommended is 30 minutes). It gets data from an api which is priovided by [Planet Teamspeak](https://www.planetteamspeak.com/) (could have used a package that gets the amount of users after a specific time period but using an api was simpler and cleaner).
+### What Does This Application Do?What Does This Application Do?
+•	This application runs every 30 minutes using cron(recommended is 30 minutes). It gets data from API provided by Planet Teamspeak  (could have used a package that gets the amount of users after a specific time period but using API was simpler and cleaner).
 
-* The application stores all the data provided in the api into a sql database.
+•	The application stores all the data provided in the API into MySQL database. The application stores the time period, average users and max users in an array.
 
-* The application than gets stores the timeperiod, avg users, max users in a array.
+• This array is passed onto JavaScript and displayed as a graph using the ChartJS
 
-* This array is passed onto javascript and displayed as a graph using the [ChartJS](http://www.chartjs.org/)
